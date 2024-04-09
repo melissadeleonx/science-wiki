@@ -1,0 +1,15 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    <title>{% if random_entry_title %}{{ random_entry_title }} - {% endif %}Wiki Encyclopedia</title>
+{% endblock %}
+
+{% block body %}
+    <h1>{% if random_entry_title %}{{ random_entry_title }}{% endif %}</h1>
+
+    <ul>
+        {% for entry in entries %}
+            <li>{{ entry }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

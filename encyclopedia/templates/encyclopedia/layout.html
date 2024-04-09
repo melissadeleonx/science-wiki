@@ -1,0 +1,56 @@
+<!-- Connect the files inside the static folder -->
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="icon" href="{% static 'encyclopedia/images/favicon.png' %}" type="image/png">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="{% static 'encyclopedia/styles.css' %}" rel="stylesheet">
+    </head>
+    <body>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+    {% endif %}
+        <div class="row">
+            <!-- Sidebar starts here -->
+            <div class="sidebar col-lg-2 col-md-3">
+                <div class="d-flex justify-content-center">
+                    <a href="{% url 'index' %}">
+                        <img src="{% static 'encyclopedia/images/logo.png' %}" alt="Logo" class="logo-img">
+                    </a>
+                </div>
+                <h1 class="text-center fw-bold display-5 text-shine">uniVVV</h2>
+                <!-- <h2 class="text-center text-muted display-5">Wiki that connects you to the galaxies</h2>  -->
+                
+                <!-- Search form -->
+                <form action="{% url 'search' %}" method="GET" class="text-center">
+                    <input class="search text-center" type="text" name="q" placeholder="Search the universe. . .">
+                </form>
+                <div>
+                    <a href="{% url 'index' %}">Home</a>
+                </div>
+                <div>
+                    <a href="{% url 'create' %}">Create New Page</a>
+                </div>
+                <div>
+                    <a href="{% url 'random_page' %}">Random Page</a>
+                </div>
+            <div>
+                {% block nav %}
+                {% endblock %}
+            </div>
+        </div>
+            <div class="main col-lg-10 col-md-9">
+                {% block body %}
+                {% endblock %}
+            </div>
+        </div>
+    </body>
+</html>

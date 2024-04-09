@@ -1,0 +1,10 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+   {{ title }} - uniVVV Encyclopedia
+{% endblock %}
+
+{% block body %}
+  <div>{{ content|safe }}</div>
+  <a href="{% url 'edit' title=title %}">Edit Page</a>
+{% endblock %}  
