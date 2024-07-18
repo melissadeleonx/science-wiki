@@ -4,6 +4,7 @@
 import markdown2
 import random
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from .util import list_entries, get_entry, save_entry
 from .forms import NewPageForm, EditEntryForm
 
@@ -79,11 +80,10 @@ def create_page(request):
                 return render(request, 'encyclopedia/error.html', {'error_message': error_message})
             else:
                 markdown_content = f"# {title}\n\n{content}"
-
                 save_entry(title, markdown_content)
                 markdown_content = markdown2.markdown(content)
-                html_content = markdown2.markdown(markdown_content)
-                return render(request, 'encyclopedia/entry.html', {'title': title, 'content': html_content})
+                html_content = markdown_content
+                return redirect(reverse('entry', kwargs={'title': title}))
     else:
         form = NewPageForm()
     return render(request, 'encyclopedia/create.html', {'form': form})
