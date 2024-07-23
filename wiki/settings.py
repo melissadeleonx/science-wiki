@@ -84,22 +84,12 @@ WSGI_APPLICATION = 'wiki.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-# Determine if we're running on Heroku
-ON_HEROKU = 'DATABASE_URL' in os.environ
-
-if ON_HEROKU:
-    # Use PostgreSQL on Heroku
-    DATABASES = {
-        'default': dj_database_url.config(conn_max_age=600, default='postgres://localhost')
-    }
-else:
-    # Use SQLite for local development
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        }
-    }
+DATABASES = {
+    'default': dj_database_url.config(
+        default='postgres://localhost',  # This is a fallback; it should be replaced by DATABASE_URL on Heroku
+        conn_max_age=600
+    )
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
