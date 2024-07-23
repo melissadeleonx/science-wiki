@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'tailwind',
+    # 'wikitheme',
 ]
 
 MIDDLEWARE = [
@@ -119,3 +121,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
+# TAILWIND_APP_NAME = 'wikitheme'
+
+import django_heroku
+django_heroku.settings(locals())
+
+import dj_database_url
+
+DATABASES = {
+    'default': dj_database_url.config(default='postgres://localhost')
+}
