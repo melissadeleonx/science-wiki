@@ -30,7 +30,10 @@ SECRET_KEY = os.getenv('SECRET_KEY', '%710m*zic)#0u((qugw#1@e^ty!c)9j04956v@ly(_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['sciencewiki-dba83ffdf24f.herokuapp.com']
+ALLOWED_HOSTS = ['sciencewiki-dba83ffdf24f.herokuapp.com',
+                 'localhost',
+                '127.0.0.1',
+                ]
 
 
 # Application definition
@@ -87,7 +90,7 @@ ON_HEROKU = 'DATABASE_URL' in os.environ
 if ON_HEROKU:
     # Use PostgreSQL on Heroku
     DATABASES = {
-        'default': dj_database_url.config(conn_max_age=600)
+        'default': dj_database_url.config(conn_max_age=600, default='postgres://localhost')
     }
 else:
     # Use SQLite for local development
