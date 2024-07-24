@@ -11,9 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-import dj_database_url
 from pathlib import Path
-import django
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -28,7 +26,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY', 'default_secret_key_for_local_development')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', 'False') == 'True'
+# DEBUG = os.getenv('DEBUG', 'False') == 'True'
+DEBUG = True
 
 ALLOWED_HOSTS = ['sciencewiki-dba83ffdf24f.herokuapp.com',
                  'localhost',
