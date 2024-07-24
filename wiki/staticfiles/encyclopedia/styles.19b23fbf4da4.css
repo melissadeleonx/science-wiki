@@ -1,0 +1,78 @@
+.logo-img {
+    width: 150px; 
+    height: auto; 
+}
+
+body {
+    margin: 0;
+    background-color: white;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+code {
+    white-space: pre;
+}
+
+h1 {
+    margin-top: 0px;
+    padding-top: 20px;
+}
+
+textarea {
+    height: 90vh;
+    width: 80%;
+}
+
+.main {
+    padding: 10px;
+}
+
+.search {
+    width: 100%; 
+    font-size: 16px; 
+    line-height: 20px; 
+    border-radius: 20px; 
+    padding: 15px; 
+}
+
+.sidebar {
+    background-color: #f0f0f0;
+    height: 100vh;
+    padding: 30px;
+    
+}
+
+.sidebar h1 {
+    font-size: 2.5rem
+}
+
+.sidebar h2 {
+    font-size: 1.5rem
+}
+
+.sidebar h1 .text-shine {
+    font-weight: bold;
+}
+
+.text-shine {
+    background: linear-gradient(to right, #ff6600, #ff00ff, #33ccff); 
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 200% 200%;
+    animation: galacticShine 5s linear infinite; 
+}
+
+@keyframes galacticShine {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+.sidebar a {
+    white-space: normal;
+}
