@@ -4,7 +4,7 @@ from .base import *
 DEBUG = False
 
 # Configure allowed hosts
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['sciencewiki-dba83ffdf24f.herokuapp.com'])
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])
 
 # Security settings
 SECURE_HSTS_SECONDS = 31536000  # 1 year
