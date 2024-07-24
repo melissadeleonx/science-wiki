@@ -26,8 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY', 'default_secret_key_for_local_development')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = os.getenv('DEBUG', 'False') == 'True'
-DEBUG = False
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = ['sciencewiki-dba83ffdf24f.herokuapp.com',
                  'localhost',
