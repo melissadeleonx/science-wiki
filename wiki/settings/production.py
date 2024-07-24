@@ -1,7 +1,7 @@
 from .base import *
 
 # Set debug to False for production
-DEBUG = True
+DEBUG = False
 
 # Configure allowed hosts
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])
