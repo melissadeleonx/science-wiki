@@ -1,0 +1,16 @@
+{% extends "encyclopedia/auth_layout.html" %}
+
+{% block title %}
+    All Pages
+{% endblock %}
+
+{% block body %}
+    <h1>All Pages</h1>
+
+    <ul>
+        {% for entry_title in entry_titles %}
+            <li><a href="{% url 'entry' entry_title %}">{{ entry_title }}</a></li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
