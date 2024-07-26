@@ -139,6 +139,18 @@
                 <li class="nav-item">
                   <a class="nav-link btn btn-bd-outline" href="#">Contact</a>
                 </li>
+                <li class="nav-item">
+                  <!-- Language Translation -->
+            <div id="google_translate_element" class="nav-link btn btn-bd-outline flex"></div>
+            <script type="text/javascript">
+              function googleTranslateElementInit() {
+                new google.translate.TranslateElement({
+                  pageLanguage: 'en',
+                  layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                }, 'google_translate_element');
+              }
+            </script>
+              </li>
               </ul>
               <form class="d-flex" role="search">
                 <div class="search-wrapper">
@@ -221,6 +233,8 @@
          <script src="{% static 'encyclopedia/script.js' %}"></script>
          <script src="{% static 'encyclopedia/color-mode.js' %}"></script>
          <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+         <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
          
        </body>
      </html>

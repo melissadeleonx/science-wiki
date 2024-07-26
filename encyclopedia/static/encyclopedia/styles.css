@@ -353,14 +353,3 @@ textarea {
   }
 }
 
-#apod-container {
-  overflow: hidden; /* Hide any overflow */
-}
-
-.img-fluid {
-  object-fit: cover; /* Cover the container, maintaining aspect ratio */
-}
-
-.description {
-  border-top: 1px solid #fff;
-}

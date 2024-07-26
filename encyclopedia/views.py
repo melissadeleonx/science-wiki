@@ -7,6 +7,10 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from .util import list_entries, get_entry, save_entry
 from .forms import NewPageForm, EditEntryForm
+from django.conf import settings
+from django.http import JsonResponse
+import requests
+
 
 
 # Define the index view function which renders the index page of the app
@@ -130,3 +134,13 @@ def random_page(request):
         return redirect('entry', title=random_entry_title)
     else:
         return render(request, 'encyclopedia/error.html', {'error_message': "No entries available."}, status=404)
+    
+def apod_view(request):
+    api_key = settings.NASA_API_KEY
+    api_url = f"https://api.nasa.gov/planetary/apod?api_key={api_key}"
+
+    response = requests.get(api_url)
+    if response.status_code == 200:
+        return JsonResponse(response.json())
+    else:
+        return JsonResponse({'error': 'Failed to fetch data'}, status=response.status_code)

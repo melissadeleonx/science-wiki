@@ -10,4 +10,5 @@ urlpatterns = [
     path('create/', views.create_page, name='create'),
     path('wiki/<str:title>/edit/', views.edit_page, name='edit'),
     path('random/', views.random_page, name='random_page'),
+    path('api/apod/', views.apod_view, name='apod_view'),
 ]
