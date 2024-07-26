@@ -14,10 +14,6 @@ code {
     white-space: pre;
 }
 
-h1 {
-    margin-top: 0px;
-    padding-top: 20px;
-}
 
 textarea {
     height: 90vh;
@@ -121,7 +117,7 @@ textarea {
     --bs-btn-bg: var(--bd-green-bg);
     --bs-btn-border-color: var(--bd-green-bg);
     --bs-btn-hover-color: var(--bs-white);
-    --bs-btn-hover-bg: #009900; /* Darker green for hover */
+    --bs-btn-hover-bg: #034503; /* Darker green for hover */
     --bs-btn-hover-border-color: #009900; /* Darker green for hover */
     --bs-btn-focus-shadow-rgb: var(--bd-green-rgb);
     --bs-btn-active-color: var(--bs-btn-hover-color);
@@ -173,17 +169,19 @@ textarea {
 }
 
   /* Spacethemed background to all pages, should match the script */
-.particles-js {
+
+
+  .particles-js {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: -1;
-    background: linear-gradient(to bottom, #003300, #004400, #005500, #006600, #007700);
+    background: linear-gradient(to bottom, #004400, #006600, #008800, #00aaff, #00ccff);
     background-repeat: no-repeat;
     background-size: cover;
-  }
+}
 
   .small-footer {
     color: #6c757d;
@@ -352,4 +350,3 @@ textarea {
     left: 5px; 
   }
 }
-

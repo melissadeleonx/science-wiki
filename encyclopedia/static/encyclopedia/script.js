@@ -1,3 +1,4 @@
+
 // Universe effect for the default theme of the website, interchangeable with the white background
 document.addEventListener("DOMContentLoaded", function() {
     particlesJS("particles-js", {
@@ -149,4 +150,15 @@ document.addEventListener("DOMContentLoaded", function() {
       image.style.animation = `${animation} ${duration}s infinite alternate ease-in-out ${delay}s`;
     });
   });
-  
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var animationPath = document.getElementById('lottie-animation').getAttribute('data-animation-path');
+    
+    lottie.loadAnimation({
+        container: document.getElementById('lottie-animation'),
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: animationPath, 
+    });
+});

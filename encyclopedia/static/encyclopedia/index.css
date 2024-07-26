@@ -1,9 +1,9 @@
 #apod-container {
-    overflow: hidden; /* Hide any overflow */
+    overflow: hidden; 
   }
   
   .img-fluid {
-    object-fit: cover; /* Cover the container, maintaining aspect ratio */
+    object-fit: cover;
   }
   
   .description {
@@ -21,4 +21,51 @@
 
 .morph-button:hover {
     color: #009900;
+}
+
+.h1-index {
+  font-size: 3.5rem;
+  font-weight: bold; 
+}
+
+.h1-index {
+  font-size: 2.5rem;
+  font-weight: bold; 
+}
+
+.centered-text {
+  max-width: 800px; 
+  margin: 0 auto; 
+}
+.card {
+  border: 1px solid #000000; /* Custom border color */
+  border-radius: 0.25rem; /* Rounded corners */
+}
+
+.card:hover {
+  border: 2px solid #004400; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: scale(1.01);
+  transition: transform 0.3s ease; 
+}
+
+.card-img-top {
+  height: 250px; /* Fixed height for the image container */
+  display: flex; /* Use flexbox to center the image */
+  align-items: center; /* Center the image vertically */
+  justify-content: center; /* Center the image horizontally */
+  overflow: hidden; /* Hide any overflowed part of the image */
+  background-color: white;
+}
+
+.card-img-top img {
+  max-height: 300px; /* Limit the maximum height of the image */
+  max-width: 300px; /* Limit the maximum width of the image */
+  height: auto; /* Maintain the original aspect ratio */
+  width: auto; /* Maintain the original aspect ratio */
+}
+
+.card-body {
+  border-radius: 0.5rem; 
+  padding: 2rem; 
 }
