@@ -162,42 +162,51 @@
             </div>
           </div>
         </nav>
-        <div class="row">
-            <!-- Sidebar starts here -->
-            <div class="sidebar col-lg-2 col-md-3">
-                <div class="d-flex justify-content-center">
-                    <a href="{% url 'index' %}">
-                        <img src="{% static 'encyclopedia/images/logo.png' %}" alt="Logo" class="logo-img">
-                    </a>
-                </div>
-                <h1 class="text-center fw-bold display-5 text-shine">uniVVV</h2>
-                <!-- <h2 class="text-center text-muted display-5">Wiki that connects you to the galaxies</h2>  -->
-                
-                <!-- Search form -->
-                <form action="{% url 'search' %}" method="GET" class="text-center">
-                    <input class="search text-center" type="text" name="q" placeholder="Search the universe. . .">
-                </form>
-                <div>
-                    <a href="{% url 'index' %}">Home</a>
-                </div>
-                <div>
-                    <a href="{% url 'create' %}">Create New Page</a>
-                </div>
-                <div>
-                    <a href="{% url 'random_page' %}">Random Page</a>
-                </div>
-            <div>
-                {% block nav %}
-                {% endblock %}
-            </div>
-        </div>
-                     <!-- Individual pages own layout starts here -->
-            <div class="main col-lg-10 col-md-9">
-                {% block body %}
-                {% endblock %}
-            </div>
-        </div>
 
+
+        <div class="container mt-5">
+          <div class="row">
+              <!-- Left Sidebar -->
+              <div class="sidebar col-lg-2 col-md-3">
+                  <h1 class="text-center fw-bold display-6">All Topics</h1>
+                  <!-- Search form -->
+                  <form action="{% url 'search' %}" method="GET" class="text-center mb-4">
+                      <input class="search text-center form-control" type="text" name="q" placeholder="Search the universe...">
+                  </form>
+                  <div>
+                      <a href="{% url 'index' %}" class="d-block mb-2">Home</a>
+                  </div>
+                  <div>
+                      <a href="{% url 'create' %}" class="d-block mb-2">Create New Page</a>
+                  </div>
+                  <div>
+                      <a href="{% url 'random_page' %}" class="d-block mb-2">Random Page</a>
+                  </div>
+                  <div>
+                      {% block nav %}
+                      {% endblock %}
+                  </div>
+              </div>
+              
+              <!-- Main Content -->
+              <div class="main col-lg-8 col-md-6">
+                  {% block body %}
+                  {% endblock %}
+              </div>
+              
+              <!-- Right Sidebar (Optional) -->
+              <div class="sidebar col-lg-2 col-md-3">
+                <h3 class="fw-bold">Menu</h3>
+                <div class="sidebar-menu">
+                    <a href="#">Profile</a>
+                    <a href="#">Settings</a>
+                    <a href="#">Notifications</a>
+                    <a href="#">Help</a>
+                    <a href="#">Logout</a>
+                </div>
+            </div>
+          </div>
+      </div>
         <hr class="py-2">
         <footer class="container py-2 small-footer">
          <div>
@@ -233,7 +242,7 @@
          <script src="{% static 'encyclopedia/script.js' %}"></script>
          <script src="{% static 'encyclopedia/color-mode.js' %}"></script>
          <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-         <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
+         
          <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
          
