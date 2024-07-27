@@ -23,26 +23,28 @@
         <p class="fs-4 centered-text">ScienceWiki is your go-to source for reliable and up-to-date information on a wide range of scientific topics. Dive into our comprehensive articles and explore the wonders of science with us.</p>
         <button class="btn btn-lg btn-bd-primary mt-4">Explore Science</button>
     </div>
-    <!-- How to Contribute Section -->
-    <div class="container d-flex align-items-center justify-content-center full-height mt-5">
-        <div class="row w-100">
-            <div class="col-12 col-md-6 text-column d-flex flex-column justify-content-center align-items-center">
-                <div>
-                    <h2 class="h2-index">How to Contribute</h2>
-                    <p class="fs-5">
-                        <strong>Want to make a difference?</strong><br>
-                        Contributing to ScienceWiki is simple and rewarding. Whether you’re an experienced researcher, a dedicated student, or a passionate science enthusiast, there are many ways you can get involved.
-                    </p>
-                    <p class="fs-5">
-                        Join our community and help us grow our knowledge base. Your contributions are valuable and greatly appreciated!
-                    </p>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
-                <div id="lottie-animation" data-animation-path="{% static 'encyclopedia/images/contribute.json' %}" style="width: 100%; height: 100%;"></div> <!-- Lottie animation container -->
+<!-- How to Contribute Section -->
+<div class="container d-flex align-items-center justify-content-center full-height mt-5">
+    <div class="row w-100">
+        <!-- Lottie animation container -->
+        <div class="col-12 col-md-6 d-flex justify-content-center align-items-center order-1 order-md-2">
+            <div id="lottie-animation" data-animation-path="{% static 'encyclopedia/images/contribute.json' %}" style="width: 100%; height: 100%;"></div>
+        </div>
+        <!-- Text content -->
+        <div class="col-12 col-md-6 text-column d-flex flex-column justify-content-center align-items-center order-2 order-md-1">
+            <div>
+                <h2 class="h2-index">How to Contribute</h2>
+                <p class="fs-5">
+                    <strong>Want to make a difference?</strong><br>
+                    Contributing to ScienceWiki is simple and rewarding. Whether you’re an experienced researcher, a dedicated student, or a passionate science enthusiast, there are many ways you can get involved.
+                </p>
+                <p class="fs-5">
+                    Join our community and help us grow our knowledge base. Your contributions are valuable and greatly appreciated!
+                </p>
             </div>
         </div>
     </div>
+</div>
 
     <!-- Ways to Contribute Card Section -->
     <div class="container mt-5">

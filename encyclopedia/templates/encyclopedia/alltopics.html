@@ -1,10 +1,12 @@
-{% extends "encyclopedia/auth_layout.html" %}
+{% extends "encyclopedia/layout.html" %}
 
 {% block title %}
     All Pages
 {% endblock %}
 
 {% block body %}
+<div class="container-fluid p-0">
+
     <h1>All Pages</h1>
 
     <ul>
@@ -12,5 +14,5 @@
             <li><a href="{% url 'entry' entry_title %}">{{ entry_title }}</a></li>
         {% endfor %}
     </ul>
-
+</div>
 {% endblock %}

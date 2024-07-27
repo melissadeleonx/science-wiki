@@ -19,6 +19,12 @@ def index(request):
     entry_titles = list_entries()
     return render(request, 'encyclopedia/index.html', {'entry_titles': entry_titles})
 
+def all_topics(request):
+     # Use the list_entries() function from the given util module
+    entry_titles = list_entries()
+    return render(request, 'encyclopedia/alltopics.html', {'entry_titles': entry_titles})
+
+
 # Define the entry view function to render individual entry pages
 def entry_page(request, title):
     # Use the get_entry function from util module

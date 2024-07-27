@@ -145,8 +145,8 @@ document.addEventListener("DOMContentLoaded", function() {
       const animation = animations[index % animations.length];
       
       // Set random animation duration and delay
-      const duration = Math.random() * 20 + 10; // Between 10 and 30 seconds
-      const delay = Math.random() * 10; // Between 0 and 10 seconds
+      const duration = Math.random() * 20 + 10; 
+      const delay = Math.random() * 10; 
       image.style.animation = `${animation} ${duration}s infinite alternate ease-in-out ${delay}s`;
     });
   });
@@ -162,3 +162,4 @@ document.addEventListener("DOMContentLoaded", function() {
         path: animationPath, 
     });
 });
+

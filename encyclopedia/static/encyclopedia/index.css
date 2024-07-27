@@ -14,7 +14,6 @@
     font-size: 2rem;
     background: transparent;
     border: none;
-    color: #333;
     cursor: pointer;
     transition: color 0.3s;
 }
@@ -38,8 +37,8 @@
   margin: 0 auto; 
 }
 .card {
-  border: 1px solid #000000; /* Custom border color */
-  border-radius: 0.25rem; /* Rounded corners */
+  border: 1px solid #000000; 
+  border-radius: 0.25rem; 
 }
 
 .card:hover {
@@ -50,22 +49,23 @@
 }
 
 .card-img-top {
-  height: 250px; /* Fixed height for the image container */
-  display: flex; /* Use flexbox to center the image */
-  align-items: center; /* Center the image vertically */
-  justify-content: center; /* Center the image horizontally */
-  overflow: hidden; /* Hide any overflowed part of the image */
+  height: 250px; 
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  overflow: hidden; 
   background-color: white;
 }
 
 .card-img-top img {
-  max-height: 300px; /* Limit the maximum height of the image */
-  max-width: 300px; /* Limit the maximum width of the image */
-  height: auto; /* Maintain the original aspect ratio */
-  width: auto; /* Maintain the original aspect ratio */
+  max-height: 300px; 
+  max-width: 300px; 
+  height: auto; 
+  width: auto; 
 }
 
 .card-body {
   border-radius: 0.5rem; 
   padding: 2rem; 
 }
+

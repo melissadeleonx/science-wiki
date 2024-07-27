@@ -20,9 +20,6 @@ textarea {
     width: 80%;
 }
 
-.main {
-    padding: 10px;
-}
 
 .search {
     width: 100%; 
@@ -32,20 +29,6 @@ textarea {
     padding: 15px; 
 }
 
-.sidebar {
-    height: 100vh;
-    padding: 30px;
-    
-}
-
-.sidebar h1 {
-    font-size: 2.5rem
-}
-
-
-.sidebar a {
-    white-space: normal;
-}
 
 /* CSS for color-mode */
 .bd-placeholder-img {
@@ -91,13 +74,13 @@ textarea {
     --bs-btn-bg: var(--bd-green-bg);
     --bs-btn-border-color: var(--bd-green-bg);
     --bs-btn-hover-color: var(--bs-white);
-    --bs-btn-hover-bg: #034503; /* Darker green for hover */
-    --bs-btn-hover-border-color: #009900; /* Darker green for hover */
+    --bs-btn-hover-bg: #034503; 
+    --bs-btn-hover-border-color: #009900; 
     --bs-btn-focus-shadow-rgb: var(--bd-green-rgb);
     --bs-btn-active-color: var(--bs-btn-hover-color);
-    --bs-btn-active-bg: #006600; /* Even darker green for active state */
-    --bs-btn-active-border-color: #006600; /* Even darker green for active state */
-}
+    --bs-btn-active-bg: #006600; 
+    --bs-btn-active-border-color: #006600;
+  }
 
 
 .bd-mode-toggle {
@@ -110,13 +93,13 @@ textarea {
 
 /* Custom primary outline button */
 .btn-bd-outline {
-  --bd-outline-border: #009900; /* Green border color */
-  --bd-outline-hover-bg: #00990036; /* Very light gray for hover background */
-  --bd-outline-hover-border: #009900; /* Green border color on hover */
-  --bd-outline-focus-shadow-rgb: 0, 0, 0; /* Customize focus shadow color */
-  --bd-outline-active-bg: #e6e6e6; /* Light gray for active background */
-  --bd-outline-active-border: #009900; /* Green border color on active */
-  --bd-outline-active-text: #009900; /* Green text color on active */
+  --bd-outline-border: #009900; 
+  --bd-outline-hover-bg: #00990036; 
+  --bd-outline-hover-border: #009900; 
+  --bd-outline-focus-shadow-rgb: 0, 0, 0; 
+  --bd-outline-active-bg: #e6e6e6; 
+  --bd-outline-active-border: #009900; 
+  --bd-outline-active-text: #009900; 
 }
 
 /* Apply the custom styles */
@@ -143,8 +126,6 @@ textarea {
 }
 
   /* Spacethemed background to all pages, should match the script */
-
-
   .particles-js {
     position: fixed;
     top: 0;
@@ -192,7 +173,7 @@ textarea {
     position: relative;
   }
 
-  /* Ensure the dropdown menu is hidden by default */
+/* NavBar Styling */
 .navbar-nav .dropdown-menu {
   display: none;
   position: absolute;
@@ -205,8 +186,6 @@ textarea {
   border-radius: 0;
   box-shadow: none;
 }
-
-/* Show dropdown on hover */
 
 .navbar {
   position: relative;
@@ -224,12 +203,10 @@ textarea {
   display: block;
 }
 
-/* Style for the navbar */
 .navbar-nav .nav-item {
   position: relative;
 }
 
-/* Additional styling for dropdown items */
 .dropdown-menu .dropdown-item {
   white-space: nowrap;
 }
@@ -243,11 +220,10 @@ textarea {
 }
 
 .navbar-nav .dropdown-toggle::after {
-  display: none; /* Hide the caret/arrow */
+  display: none; 
 }
 
 /* Effects for floating images */
-
 #floating-images {
   position: fixed;
   top: 0;
@@ -324,3 +300,37 @@ textarea {
     left: 5px; 
   }
 }
+
+.cc-window {
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  background-color: #333; 
+  color: #fff;
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+  bottom: 0; 
+  right: 0; 
+}
+
+/* Styling for the message */
+.cc-message {
+  margin-right: 10px; 
+  flex: 1; 
+}
+
+/* Styling for the button */
+.cc-btn {
+  background-color: #009900;
+  color: #fff;
+  font-weight: bold;
+  border: none; 
+  padding: 8px 20px; 
+  font-size: 14px; 
+  border-radius: .25rem; 
+  transition: background-color 0.3s;
+  text-decoration: none;
+}
+
+.cc-btn:hover {
+  background-color: #007700; }
