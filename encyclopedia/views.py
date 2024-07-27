@@ -10,6 +10,8 @@ from .forms import NewPageForm, EditEntryForm
 from django.conf import settings
 from django.http import JsonResponse
 import requests
+from .models import Article
+from django.shortcuts import render, get_object_or_404
 
 
 
@@ -29,6 +31,8 @@ def all_topics(request):
 def entry_page(request, title):
     # Use the get_entry function from util module
     entry_content = get_entry(title)
+    entry_titles = list_entries()
+
 
     # Check if entry content exists, render error template with 404 status if entry not found
     if not entry_content:
@@ -38,7 +42,7 @@ def entry_page(request, title):
         
         # Convert markdown content to HTML using the markdown2 module
         html_content = markdown2.markdown(entry_content)
-        return render(request, 'encyclopedia/entry.html', {'title': title, 'content': html_content})
+        return render(request, 'encyclopedia/entry.html', {'title': title, 'content': html_content, 'entry_titles': entry_titles})
         
 
 # To handle search request. In Django, request in views.py is always included as the first parameter of a function.
@@ -46,12 +50,12 @@ def search_wiki(request):
     # Retrieve the search query from the request GET parameters.
     query = request.GET.get('q', '').strip()
     # Get a list of all entry titles using the list_entries function from util module
-    entries = list_entries()
+    entry_titles = list_entries()
 
     # Make conditional statements, check for an exact match of the query in the list of entry titles
     if query:
         exact_match = None
-        for entry in entries:
+        for entry in entry_titles:
             if entry.lower() == query.lower():
                 exact_match = entry
                 break
@@ -60,26 +64,25 @@ def search_wiki(request):
             return redirect('entry', title=exact_match)
 
         # If there is no exact match, filter the entry titles to find those containing the query as a substring.
-        matching_entries = []
-        for entry in entries:
-            if query.lower() in entry.lower():
-                matching_entries.append(entry)
+        matching_entries = [entry for entry in entry_titles if query.lower() in entry.lower()]
+
                 
         context = {
             'query': query,
             'entries': matching_entries,
-            'entry_titles': entries,
+            'entry_titles': entry_titles,
         }
         
         # Display the filtered entry titles in the search results page.
         return render(request, 'encyclopedia/search_results.html', context)
     else:
-        return render(request, 'encyclopedia/search_results.html', {'entry_titles': entries})
+        return render(request, 'encyclopedia/search_results.html', {'entry_titles': entry_titles})
                     # If the query is not found, show a No results found message and show related topics
 
 
 # Creating or adding a new entry logic
 def create_page(request):
+    entry_titles = list_entries()
     if request.method == 'POST':
         form = NewPageForm(request.POST)
         if form.is_valid():
@@ -87,7 +90,7 @@ def create_page(request):
             content = form.cleaned_data['content']
             if get_entry(title) is not None:
                 error_message = "An entry with this title already exists."
-                return render(request, 'encyclopedia/error.html', {'error_message': error_message})
+                return render(request, 'encyclopedia/error.html', {'error_message': error_message, })
             else:
                 markdown_content = f"# {title}\n\n{content}"
                 save_entry(title, markdown_content)
@@ -96,7 +99,7 @@ def create_page(request):
                 return redirect(reverse('entry', kwargs={'title': title}))
     else:
         form = NewPageForm()
-    return render(request, 'encyclopedia/create.html', {'form': form})
+    return render(request, 'encyclopedia/create.html', {'form': form, 'entry_titles': entry_titles})
 
 def edit_page(request, title):
     # Retrieve the current content of the entry
@@ -132,6 +135,7 @@ def remove_title_from_content(content):
     content_without_title = '\n'.join(lines)
     
     return content_without_title
+
 def random_page(request):
     entries = list_entries()
 
@@ -150,3 +154,19 @@ def apod_view(request):
         return JsonResponse(response.json())
     else:
         return JsonResponse({'error': 'Failed to fetch data'}, status=response.status_code)
+
+# def article_list(request):
+#     articles = Article.objects.all()
+#     return render(request, 'articles/articles.html', {'articles': articles})
+
+# def feed_view(request):
+#     api_key = settings.FEEDAPI_KEY 
+#     url = f'https://api.feedapi.com/v1/feeds?api_key={api_key}'  # Adjust the URL based on FeedAPI documentation
+#     response = requests.get(url)
+    
+#     if response.status_code == 200:
+#         data = response.json()
+#     else:
+#         data = {'error': 'Unable to fetch data'}
+    
+#     return render(request, 'feed.html', {'data': data})
