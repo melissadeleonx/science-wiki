@@ -161,19 +161,21 @@ def apod_view(request):
     api_key = settings.NASA_API_KEY
     api_url = f"https://api.nasa.gov/planetary/apod?api_key={api_key}"
 
-    response = requests.get(api_url)
-    if response.status_code == 200:
-        apod_data = response.json()
-        rate_limit = response.headers.get('X-RateLimit-Limit')
-        rate_limit_remaining = response.headers.get('X-RateLimit-Remaining')
+    try:
+        response = requests.get(api_url, timeout=10)  # Set a timeout of 10 seconds
+        response.raise_for_status()  # Raise an HTTPError for bad responses (4xx and 5xx)
+    except requests.exceptions.HTTPError as http_err:
+        return JsonResponse({'error': f'HTTP error occurred: {http_err}'}, status=response.status_code)
+    except requests.exceptions.ConnectionError:
+        return JsonResponse({'error': 'Failed to connect to the API. The API might be down.'}, status=503)
+    except requests.exceptions.Timeout:
+        return JsonResponse({'error': 'The request to the API timed out. The API might be down.'}, status=504)
+    except requests.exceptions.RequestException as err:
+        return JsonResponse({'error': f'An error occurred: {err}'}, status=500)
 
-        apod_data['rate_limit'] = rate_limit
-        apod_data['rate_limit_remaining'] = rate_limit_remaining
-
-        return JsonResponse(apod_data)
-    else:
-        error_message = 'Failed to fetch data'
-        return JsonResponse({'error': error_message}, status=response.status_code)
+    # If the request is successful and no exceptions are raised
+    apod_data = response.json()
+    return JsonResponse(apod_data)
     
     
 def fetch_science_articles():

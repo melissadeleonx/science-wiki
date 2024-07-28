@@ -7,11 +7,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const defaultDescription = 'I have been impressed with the urgency of doing. Knowing is not enough; we must apply. Being willing is not enough; we must do — Leonardo da Vinci';
 
+    const apiUrl = '/api/apod/?format=json&hasfast=true&authuser=0';
 
-    fetch('/api/apod/')
+    fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
-            console.log("API data processed");
+            console.log("API data processed", data);
             if (data.media_type === 'image') {
                 apodImage.src = data.url;
                 apodImage.alt = data.title;
@@ -23,6 +24,5 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(error => {
             console.error('Error fetching the NASA APOD:', error);
             apodDescription.textContent = defaultDescription;
-            apodImage.src = apodImage;
         });
 });
