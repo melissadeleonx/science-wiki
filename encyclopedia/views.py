@@ -12,6 +12,8 @@ from django.http import JsonResponse
 import requests
 from .models import Article
 from django.shortcuts import render, get_object_or_404
+import datetime
+
 
 
 
@@ -29,20 +31,30 @@ def all_topics(request):
 
 # Define the entry view function to render individual entry pages
 def entry_page(request, title):
-    # Use the get_entry function from util module
     entry_content = get_entry(title)
     entry_titles = list_entries()
 
-
-    # Check if entry content exists, render error template with 404 status if entry not found
     if not entry_content:
         error_message = "Error: 404 Not Found"
-        return render(request, 'encyclopedia/error.html', {'error_message': error_message, 'title': title, 'entries': entry_content}, status=404)
+        return render(request, 'encyclopedia/error.html', {
+            'error_message': error_message,
+            'title': title,
+            'entries': entry_titles
+        }, status=404)
     else:
-        
-        # Convert markdown content to HTML using the markdown2 module
         html_content = markdown2.markdown(entry_content)
-        return render(request, 'encyclopedia/entry.html', {'title': title, 'content': html_content, 'entry_titles': entry_titles})
+        og_url = request.build_absolute_uri()
+        og_image = '/space.png' 
+
+        return render(request, 'encyclopedia/entry.html', {
+            'title': title,
+            'content': html_content,
+            'entry_titles': entry_titles,
+            'og_title': title,
+            'og_description': entry_content[:150], 
+            'og_url': og_url,
+            'og_image': og_image
+        })
         
 
 # To handle search request. In Django, request in views.py is always included as the first parameter of a function.
@@ -154,19 +166,47 @@ def apod_view(request):
         return JsonResponse(response.json())
     else:
         return JsonResponse({'error': 'Failed to fetch data'}, status=response.status_code)
-
-# def article_list(request):
-#     articles = Article.objects.all()
-#     return render(request, 'articles/articles.html', {'articles': articles})
-
-# def feed_view(request):
-#     api_key = settings.FEEDAPI_KEY 
-#     url = f'https://api.feedapi.com/v1/feeds?api_key={api_key}'  # Adjust the URL based on FeedAPI documentation
-#     response = requests.get(url)
     
-#     if response.status_code == 200:
-#         data = response.json()
-#     else:
-#         data = {'error': 'Unable to fetch data'}
     
-#     return render(request, 'feed.html', {'data': data})
+def fetch_science_articles():
+    url = 'https://en.wikipedia.org/w/api.php'
+    params = {
+        'action': 'query',
+        'list': 'search',
+        'srsearch': 'science',
+        'format': 'json',
+        'srlimit': 10,
+        'prop': 'pageimages',
+        'pithumbsize': 100
+    }
+    response = requests.get(url, params=params)
+    
+    if response.status_code == 200:
+        data = response.json()
+        articles = data['query']['search']
+        
+        for article in articles:
+            page_id = article['pageid']
+            page_url = f"https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&pageids={page_id}&pithumbsize=100"
+            page_response = requests.get(page_url)
+            if page_response.status_code == 200:
+                page_data = page_response.json()
+                thumbnail = page_data['query']['pages'][str(page_id)].get('thumbnail', {})
+                article['thumbnail'] = thumbnail.get('source', None)
+        
+        return articles
+    return None
+
+def featured_content_view(request):
+    entry_titles = list_entries()
+    articles = fetch_science_articles()
+    
+    if articles:
+        context = {
+            'articles': articles,
+            'entry_titles': entry_titles
+        }
+        return render(request, 'encyclopedia/articles.html', context)
+    else:
+        error_message = 'No science-related articles found.'
+        return render(request, 'encyclopedia/articles.html', {'error': error_message, 'entry_titles': entry_titles})

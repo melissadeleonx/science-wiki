@@ -5,11 +5,38 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <!-- Improve meta info, SEO, Google analytics etc. -->
-        <meta name="description" content="">
-        <meta name="author" content="">
+       <!-- Primary Meta Tags -->
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <meta name="description" content="">
+       <meta name="keywords" content="science research, discover science, science wiki">
+       <meta name="author" content="Melissa De Leon">
+       <meta name="robots" content="index, follow">
+       <meta name="theme-color" content="#ffffff">
+
+       <!-- Open Graph / Facebook -->
+       <meta property="og:type" content="website">
+       <meta property="og:url" content="https://sciencewiki-dba83ffdf24f.herokuapp.com/">
+       <meta property="og:title" content="Science Wiki">
+       <meta property="og:description" content="">
+       <meta property="og:image" content="{% static 'encyclopedia/images/space.png' %}">
+       <meta property="og:image:width" content="1200">
+       <meta property="og:image:height" content="630">
+       <meta property="og:site_name" content="Science Wiki">
+       <meta property="og:locale" content="en_US">
+       
+       <!-- Twitter -->
+       <meta property="twitter:card" content="summary_large_image">
+       <meta property="twitter:url" content="https://sciencewiki-dba83ffdf24f.herokuapp.com/">
+       <meta property="twitter:title" content="Science Wiki">
+       <meta property="twitter:description" content="">
+       <meta property="twitter:image" content="{% static 'encyclopedia/images/space.png' %}">
+       <meta property="twitter:site" content="@melissadeleonx">
+       <meta property="twitter:creator" content="@melissadeleonx">
+
+       <!-- General SEO -->
+ì       <link rel="canonical" href="https://sciencewiki-dba83ffdf24f.herokuapp.com/">
+
     
         <!-- Space theme transparent bg logo, simple but catchy -->
         <link rel="icon" href="{% static 'encyclopedia/images/favicon.png' %}" type="image/png">
@@ -123,7 +150,7 @@
                   </ul>
                 </li>
                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle btn btn-bd-outline" href="#" role="button" aria-expanded="false">
+                  <a class="nav-link dropdown-toggle btn btn-bd-outline" href="{% url 'featured_content' %}" role="button" aria-expanded="false">
                     Articles
                   </a>
                   <ul class="dropdown-menu w-100">

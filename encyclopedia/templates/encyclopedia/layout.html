@@ -5,15 +5,41 @@
 
 <html lang="en">
     <head>
-        <meta charset="utf-8">
-
-        <!-- Improve meta info, SEO, Google analytics etc. -->
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
+          <!-- Primary Meta Tags -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}{% endblock %} - Science Wiki</title>
+        <meta name="title" content="{{ og_title }}">
+        <meta name="description" content="{{ og_description }}">
+        <meta name="keywords" content="science research, discover science, science wiki">
+        <meta name="author" content="Melissa De Leon">
+        <meta name="robots" content="index, follow">
+        <meta name="theme-color" content="#ffffff">
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="{{ og_url }}">
+        <meta property="og:title" content="{{ og_title }}">
+        <meta property="og:description" content="{{ og_description }}">
+        <meta property="og:image" content="{{ og_image }}">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:site_name" content="Science Wiki">
+        <meta property="og:locale" content="en_US">
+        
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="{{ og_url }}">
+        <meta property="twitter:title" content="{{ og_title }}">
+        <meta property="twitter:description" content="{{ og_description }}">
+        <meta property="twitter:image" content="{{ og_image }}">
+        <meta property="twitter:site" content="@melissadeleonx">
+        <meta property="twitter:creator" content="@melissadeleonx">
+
+        <!-- General SEO -->
+ì       <link rel="canonical" href="https://sciencewiki-dba83ffdf24f.herokuapp.com/">
+
+
         <link rel="icon" href="{% static 'encyclopedia/images/favicon.png' %}" type="image/png">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js"></script>
@@ -101,7 +127,7 @@
         <nav class="navbar navbar-expand-lg">
           <div class="container-fluid">
             <a class="navbar-brand" href="{% url 'index' %}">
-              <img src="{% static 'encyclopedia/images/logo.png' %}" alt="Brand Image" style="max-height: 40px;"">
+              <img src="{% static 'encyclopedia/images/logo.png' %}" alt="Brand Image">
               <span>ScienceWiki</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -125,7 +151,7 @@
                   </ul>
                 </li>
                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle btn btn-bd-outline" href="#" role="button" aria-expanded="false">
+                  <a class="nav-link dropdown-toggle btn btn-bd-outline" href="{% url 'featured_content' %}" role="button" aria-expanded="false">
                     Articles
                   </a>
                   <ul class="dropdown-menu w-100">

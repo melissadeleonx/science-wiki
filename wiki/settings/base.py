@@ -7,7 +7,7 @@ env = environ.Env()
 environ.Env.read_env()
 
 # API Key from environment variable
-NASA_API_KEY = env('NASA_API_KEY', default='DEMO_KEY')
+NASA_API_KEY = os.getenv('NASA_API_KEY', 'DEMO_KEY')
 
 # Debugging print statements
 print("DB_NAME:", env('DB_NAME'))

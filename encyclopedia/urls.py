@@ -12,13 +12,5 @@ urlpatterns = [
     path('wiki/<str:title>/edit/', views.edit_page, name='edit'),
     path('random/', views.random_page, name='random_page'),
     path('api/apod/', views.apod_view, name='apod_view'),
-    
-    # Add URL patterns for articles
-    # path('articles/', views.article_list, name='article-list'),
-    # path('science-news/', views.science_news, name='science-news'),
-
-    # path('articles/<int:pk>/', views.article_detail, name='article-detail'),
-    # path('articles/create/', views.article_create, name='article-create'),
-    # path('articles/<int:pk>/edit/', views.article_edit, name='article-edit'),
-    # path('articles/<int:pk>/delete/', views.article_delete, name='article-delete'),
+    path('featured/', views.featured_content_view, name='featured_content'),
 ]

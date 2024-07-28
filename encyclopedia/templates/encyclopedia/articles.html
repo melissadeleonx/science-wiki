@@ -1,0 +1,44 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+{% endblock %}
+
+{% block body %}
+
+<div class="container mt-5">
+    <h1 class="mb-4">Science Articles</h1>
+    
+    {% if error %}
+        <div class="alert alert-danger">{{ error }}</div>
+    {% else %}
+        <div class="row">
+            {% for article in articles %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        {% if article.thumbnail %}
+                            <img src="{{ article.thumbnail }}" class="card-img-top" alt="{{ article.title }}">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ article.title }}</h5>
+                            <p class="card-text">{{ article.snippet|safe }}</p>
+                            <a href="https://en.wikipedia.org/wiki/{{ article.title|urlencode }}" class="btn btn-bd-primary">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                {% if forloop.counter|divisibleby:3 and not forloop.last %}
+                    </div><div class="row">
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endif %}
+    
+    <h2 class="mt-5">Other Entries</h2>
+    <ul>
+        {% for entry in entry_titles %}
+            <li>{{ entry }}</li>
+        {% endfor %}
+    </ul>
+</div>
+    
+{% endblock %}  
+
