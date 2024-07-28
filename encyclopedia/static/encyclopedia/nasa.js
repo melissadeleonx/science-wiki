@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log("nasa.js loaded");
 
     const apodImage = document.getElementById('apod-image');
+    const apodVideo = document.getElementById('apodVideo');
     const apodDescription = document.getElementById('apod-description');
 
 
@@ -16,6 +17,11 @@ document.addEventListener('DOMContentLoaded', function() {
             if (data.media_type === 'image') {
                 apodImage.src = data.url;
                 apodImage.alt = data.title;
+                apodDescription.textContent = `${data.title}: ${data.explanation}`;
+            } else if (data.media_type === 'video') {
+                // If using <iframe> for videos
+                apodVideo.src = data.url;
+                apodVideo.style.display = 'block';
                 apodDescription.textContent = `${data.title}: ${data.explanation}`;
             } else {
                 apodDescription.textContent = defaultDescription;

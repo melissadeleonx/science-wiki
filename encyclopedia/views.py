@@ -21,7 +21,21 @@ import datetime
 def index(request):
     # Use the list_entries() function from the given util module
     entry_titles = list_entries()
-    return render(request, 'encyclopedia/index.html', {'entry_titles': entry_titles})
+
+    api_key = settings.NASA_API_KEY
+    api_url = f'https://api.nasa.gov/planetary/apod?api_key={api_key}'
+    response = requests.get(api_url)
+    data = response.json()
+
+    context = {
+        'entry_titles': entry_titles,
+        'media_type': data.get('media_type'),
+        'url': data.get('url'),
+        'title': data.get('title'),
+        'explanation': data.get('explanation')
+    }
+
+    return render(request, 'encyclopedia/index.html', context)
 
 def all_topics(request):
      # Use the list_entries() function from the given util module
