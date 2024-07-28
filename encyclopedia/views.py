@@ -29,10 +29,6 @@ def index(request):
 
     context = {
         'entry_titles': entry_titles,
-        'media_type': data.get('media_type'),
-        'url': data.get('url'),
-        'title': data.get('title'),
-        'explanation': data.get('explanation')
     }
 
     return render(request, 'encyclopedia/index.html', context)

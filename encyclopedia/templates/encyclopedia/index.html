@@ -10,15 +10,10 @@
 <div class="container-fluid p-0">
     <!-- Hero Section -->
     <div id="apod-container" class="position-relative vh-100">
-        {% if media_type == 'image' %}
-            <img id="apod-image" class="img-fluid w-100 h-100 position-absolute top-0 start-0" src="{{ url }}" alt="{{ title }}">
-        {% elif media_type == 'video' %}
-            <iframe id="apodVideo" class="w-100 h-100 position-absolute top-0 start-0" src="{{ url }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        {% endif %}
-        <div id="apod-description" class="description position-absolute bottom-0 start-0 w-100 p-3 text-white bg-dark bg-opacity-75">
-            {{ title }}: {{ explanation }}
-        </div>
+        <img id="apod-image" class="img-fluid w-100 h-100 position-absolute top-0 start-0" src="{% static 'encyclopedia/images/space.png' %}" alt="Astronomy Picture of the Day">
+        <div id="apod-description" class="description position-absolute bottom-0 start-0 w-100 p-3 text-white bg-dark bg-opacity-75"></div>
     </div>
+    
     <!-- Morpher Section -->
     <div class="container d-flex align-items-center justify-content-center">
         <button id="morph-button" class="morph-button m-4">Science</button>
