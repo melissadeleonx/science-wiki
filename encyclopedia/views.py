@@ -163,9 +163,17 @@ def apod_view(request):
 
     response = requests.get(api_url)
     if response.status_code == 200:
-        return JsonResponse(response.json())
+        apod_data = response.json()
+        rate_limit = response.headers.get('X-RateLimit-Limit')
+        rate_limit_remaining = response.headers.get('X-RateLimit-Remaining')
+
+        apod_data['rate_limit'] = rate_limit
+        apod_data['rate_limit_remaining'] = rate_limit_remaining
+
+        return JsonResponse(apod_data)
     else:
-        return JsonResponse({'error': 'Failed to fetch data'}, status=response.status_code)
+        error_message = 'Failed to fetch data'
+        return JsonResponse({'error': error_message}, status=response.status_code)
     
     
 def fetch_science_articles():
